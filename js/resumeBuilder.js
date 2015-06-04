@@ -11,28 +11,39 @@ var bio = {
 	addBio: function (bioProperty, helperVar) {
 		var formattedProperty = helperVar.replace("%data%", bioProperty);
 		$("#header").prepend(formattedProperty);
-		}
+		},
+	addSkills: function (bioSkillsLocation){
+	if(bioSkillsLocation.length > 0) {
+		$("#header").append(HTMLskillsStart);
+		for(index in bioSkillsLocation){
+			var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[index]);
+			$("#skills").append(formattedSkills);
+			}
+			}
+	}
 };
 
 bio.addBio(bio.role, HTMLheaderRole);
 bio.addBio(bio.name, HTMLheaderName);
+bio.addSkills(bio.skills);
+
+
 
 var workObject = {
 	"jobs":[
 		{
-			"position": "Academic Coach",
-			"employer": "CollegePlus",
-			"years": "June 2011 - Present",
-			"location": "West Palm Beach Area, FL",
-			"description": "Responsible for the academic progress of 80+ students. Focused on developing effective strategies for accelerated distance learning. Completed speed learning stunt of 18 college credits in 6 days: <a href='https://www.youtube.com/watch?v=85DlViGkvJc' target='_blank'>https://www.youtube.com/watch?v=85DlViGkvJc</a>"
+		"position": "Academic Coach",
+		"employer": "CollegePlus",
+		"years": "June 2011 - Present",
+		"location": "West Palm Beach Area, FL",
+		"description": "Responsible for the academic progress of 80+ students. Focused on developing effective strategies for accelerated distance learning. Completed speed learning stunt of 18 college credits in 6 days: <a href='https://www.youtube.com/watch?v=85DlViGkvJc' target='_blank'>https://www.youtube.com/watch?v=85DlViGkvJc</a>"
 		},
 		{
-			"position": "Executive Assistant",
-			"employer": "RedRhino",
-			"years": "June 13 - March 14",
-			"location": "Lake Worth, FL",
-			"description": "Assisted CEO and CMO with a wide rang of projects. Oversaw technology deployment, phone system, website development, and Google Apps accounts. Responsible for negotiating service contracts and technology deployment."
-
+		"position": "Executive Assistant",
+		"employer": "RedRhino",
+		"years": "June 13 - March 14",
+		"location": "Lake Worth, FL",
+		"description": "Assisted CEO and CMO with a wide rang of projects. Oversaw technology deployment, phone system, website development, and Google Apps accounts. Responsible for negotiating service contracts and technology deployment."
 		}]
 	};
 
@@ -70,18 +81,6 @@ var projectsObject = {
 		}
 ]};
 
-
-function addSkills (bioSkillsLocation){
-	if(bioSkillsLocation.length > 0) {
-		$("#header").append(HTMLskillsStart);
-	for(index in bioSkillsLocation){
-		var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[index]);
-		$("#skills").append(formattedSkills);
-	}
-	}
-}
-
-addSkills(bio.skills);
 
 
 function addWork () {
