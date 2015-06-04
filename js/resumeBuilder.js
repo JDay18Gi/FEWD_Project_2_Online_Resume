@@ -27,8 +27,6 @@ bio.addBio(bio.role, HTMLheaderRole);
 bio.addBio(bio.name, HTMLheaderName);
 bio.addSkills(bio.skills);
 
-
-
 var workObject = {
 	"jobs":[
 		{
@@ -47,7 +45,7 @@ var workObject = {
 		}],
 	addWork: function () {
 		$("#workExperience").append(HTMLworkStart);
-		for(job in workObject.jobs){
+		for(var job in workObject.jobs){
 			var formattedEmployer = HTMLworkEmployer.replace("%data%", workObject.jobs[job].employer);
 			var formattedTitle = HTMLworkTitle.replace("%data%", workObject.jobs[job].position);
 			var formattedLocation = HTMLworkLocation.replace("%data%", workObject.jobs[job].location);
@@ -59,23 +57,7 @@ var workObject = {
 		}
 	};
 
-/*
-function addWork () {
-	$("#workExperience").append(HTMLworkStart);
-	for(job in workObject.jobs){
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", workObject.jobs[job].employer);
-	var formattedTitle = HTMLworkTitle.replace("%data%", workObject.jobs[job].position);
-	var formattedLocation = HTMLworkLocation.replace("%data%", workObject.jobs[job].location);
-	var formattedDates = HTMLworkDates.replace("%data%", workObject.jobs[job].years);
-	var formattedDescription = HTMLworkDescription.replace("%data%", workObject.jobs[job].description);
-	var formattedEmployerEntry = formattedEmployer + formattedTitle + formattedLocation + formattedDates + formattedDescription;
-	$(".work-entry:last").append(formattedEmployerEntry);
-}
-}
-*/
 workObject.addWork();
-
-
 
 
 var educationalObject = {
@@ -96,6 +78,7 @@ var educationalObject = {
 		}
 		]};
 
+
 var projectsObject = {
 	"projects": [
 		{
@@ -109,11 +92,21 @@ var projectsObject = {
 		"dates": "2013-2015",
 		"description": "Maintained SquareSpace website for myself.",
 		"picture": "images/Renaisserve.png"
+		}],
+	addProjects: function () {
+		for(var project in projectsObject.projects){
+			$("#projects").append(HTMLprojectStart);
+			var projectTitle = HTMLprojectTitle.replace("%data%", projectsObject.projects[project].title);
+			var projectDate = HTMLprojectDates.replace("%data%", projectsObject.projects[project].dates);
+			var projectDescription = HTMLprojectDescription.replace("%data%", projectsObject.projects[project].description);
+			var projectPicture = HTMLprojectImage.replace("%data%", projectsObject.projects[project].picture);
+			var formattedProjectEntry = projectTitle + projectDate + projectDescription + projectPicture;
+			$(".project-entry:last").append(formattedProjectEntry);
 		}
-]};
+	}
+};
 
-
-
+projectsObject.addProjects();
 
 
 $(document).click(function(loc) {
@@ -123,19 +116,7 @@ $(document).click(function(loc) {
 });
 
 
- function addProjects () {
-	for(project in projectsObject.projects){
-	$("#projects").append(HTMLprojectStart);
-	var projectTitle = HTMLprojectTitle.replace("%data%", projectsObject.projects[project].title);
-	var projectDate = HTMLprojectDates.replace("%data%", projectsObject.projects[project].dates);
-	var projectDescription = HTMLprojectDescription.replace("%data%", projectsObject.projects[project].description);
-	var projectPicture = HTMLprojectImage.replace("%data%", projectsObject.projects[project].picture);
-	var formattedProjectEntry = projectTitle + projectDate + projectDescription + projectPicture;
-	$(".project-entry:last").append(formattedProjectEntry);
-};
-}
 
-addProjects();
 
 function addContact () {
 	var emailFormatted = HTMLemail.replace("%data%", bio.email);
