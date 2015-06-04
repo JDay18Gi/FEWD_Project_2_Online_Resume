@@ -9,35 +9,37 @@ var bio = {
 	locations: ["Jupiter, FL", "Los Angelels, CA"],
 	gitHub: "https://github.com/JDay18Gi",
 	skills: ["HTML", "CSS", "JavaScript", "Python"],
-	addBio: function (bioProperty, helperVar) {
-		var formattedProperty = helperVar.replace("%data%", bioProperty);
-		$("#header").prepend(formattedProperty);
-		},
-	addSkills: function (bioSkillsLocation){
-	if(bioSkillsLocation.length > 0) {
-		$("#header").append(HTMLskillsStart);
-		for(var index in bioSkillsLocation){
-			var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[index]);
-			$("#skills").append(formattedSkills);
+	display: {
+			addBio: function (bioProperty, helperVar) {
+				var formattedProperty = helperVar.replace("%data%", bioProperty);
+				$("#header").prepend(formattedProperty);
+				},
+			addSkills: function (bioSkillsLocation){
+				if(bioSkillsLocation.length > 0) {
+					$("#header").append(HTMLskillsStart);
+					for(var index in bioSkillsLocation){
+						var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[index]);
+						$("#skills").append(formattedSkills);
+						}
+					}
+				},
+			addContact: function() {
+				var emailFormatted = HTMLemail.replace("%data%", bio.email);
+				var gitHubFormatted = HTMLgithub.replace("%data%", bio.gitHub);
+				var formattedContacts = emailFormatted + gitHubFormatted;
+				$("#topContacts").append(formattedContacts);
+				$("#footerContacts").append(formattedContacts);
 			}
-			}
-	},
-	addContact: function() {
-		var emailFormatted = HTMLemail.replace("%data%", bio.email);
-		var gitHubFormatted = HTMLgithub.replace("%data%", bio.gitHub);
-		var formattedContacts = emailFormatted + gitHubFormatted;
-		$("#topContacts").append(formattedContacts);
-		$("#footerContacts").append(formattedContacts);
-	}
-};
+		}
+		};
 
-bio.addBio(bio.role, HTMLheaderRole);
-bio.addBio(bio.name, HTMLheaderName);
-bio.addSkills(bio.skills);
-bio.addContact();
+bio.display.addBio(bio.role, HTMLheaderRole);
+bio.display.addBio(bio.name, HTMLheaderName);
+bio.display.addSkills(bio.skills);
+bio.display.addContact();
 
 
-var workObject = {
+var work = {
 	"jobs":[
 		{
 		"position": "Academic Coach",
@@ -55,19 +57,19 @@ var workObject = {
 		}],
 	addWork: function () {
 		$("#workExperience").append(HTMLworkStart);
-		for(var job in workObject.jobs){
-			var formattedEmployer = HTMLworkEmployer.replace("%data%", workObject.jobs[job].employer);
-			var formattedTitle = HTMLworkTitle.replace("%data%", workObject.jobs[job].position);
-			var formattedLocation = HTMLworkLocation.replace("%data%", workObject.jobs[job].location);
-			var formattedDates = HTMLworkDates.replace("%data%", workObject.jobs[job].years);
-			var formattedDescription = HTMLworkDescription.replace("%data%", workObject.jobs[job].description);
+		for(var job in work.jobs){
+			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
+			var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+			var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].years);
+			var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 			var formattedEmployerEntry = formattedEmployer + formattedTitle + formattedLocation + formattedDates + formattedDescription;
 			$(".work-entry:last").append(formattedEmployerEntry);
 			}
 		}
-	};
+};
 
-workObject.addWork();
+work.addWork();
 
 
 var educationalObject = {
@@ -140,10 +142,5 @@ projectsObject.addProjects();
 
 $("#mapDiv").append(googleMap);
 
-$(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
-    logClicks(x,y);
-});
 
 
