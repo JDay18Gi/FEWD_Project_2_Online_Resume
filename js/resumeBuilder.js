@@ -2,6 +2,7 @@ var bio = {
 	name: "Jason D. Girard",
 	role: "Front-End Web Developer",
 	phone: "561.633.3829",
+	location: ["West Palm Beach, FL", "Jupiter, FL", "Moscow, Russia", "Los Angeles, CA", "Monterey, CA", "Geneva, Swizerland"],
 	email: "jason.dayne@gmail.com",
 	picture: "http://waynehastings.com/wp-content/uploads/2014/01/2348700.jpg",
 	welcomeMessage: "Thank you for visiting my site.",
@@ -137,7 +138,7 @@ var projectsObject = {
 projectsObject.addProjects();
 
 
-
+$("#mapDiv").append(googleMap);
 
 $(document).click(function(loc) {
 	var x = loc.pageX;

@@ -47,22 +47,14 @@ var googleMap = '<div id="map"></div>';
 
 
 
-clickLocations = [];
-
-function logClicks(x,y) {
-  clickLocations.push(
-    {
-      x: x,
-      y: y
-    }
-  );
-  console.log('x location: ' + x + '; y location: ' + y);
-}
 
 
 
-//https://developers.google.com/maps/documentation/javascript/reference
-
+/*
+This is the fun part. Here's where we generate the custom Google Map for the website.
+See the documentation below for more details.
+https://developers.google.com/maps/documentation/javascript/reference
+*/
 var map;    // declares a global map variable
 
 
@@ -92,7 +84,9 @@ function initializeMap() {
     var locations = [];
 
     // adds the single location property from bio to the locations array
-    locations.push(bio.location);
+    for (var location in bio.location) {
+      locations.push(bio.location[location]);
+    }
 
     // iterates through school locations and appends each location to
     // the locations array
@@ -138,7 +132,7 @@ function initializeMap() {
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      $("#mapDiv").append(googleMap);
+      // your code goes here!
     });
 
     // this is where the pin actually gets added to the map.
@@ -207,5 +201,5 @@ window.addEventListener('load', initializeMap);
 // and adjust map bounds
 window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-map.fitBounds(mapBounds);
+  map.fitBounds(mapBounds);
 });
