@@ -15,7 +15,7 @@ var bio = {
 	addSkills: function (bioSkillsLocation){
 	if(bioSkillsLocation.length > 0) {
 		$("#header").append(HTMLskillsStart);
-		for(index in bioSkillsLocation){
+		for(var index in bioSkillsLocation){
 			var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[index]);
 			$("#skills").append(formattedSkills);
 			}
@@ -44,8 +44,39 @@ var workObject = {
 		"years": "June 13 - March 14",
 		"location": "Lake Worth, FL",
 		"description": "Assisted CEO and CMO with a wide rang of projects. Oversaw technology deployment, phone system, website development, and Google Apps accounts. Responsible for negotiating service contracts and technology deployment."
-		}]
+		}],
+	addWork: function () {
+		$("#workExperience").append(HTMLworkStart);
+		for(job in workObject.jobs){
+			var formattedEmployer = HTMLworkEmployer.replace("%data%", workObject.jobs[job].employer);
+			var formattedTitle = HTMLworkTitle.replace("%data%", workObject.jobs[job].position);
+			var formattedLocation = HTMLworkLocation.replace("%data%", workObject.jobs[job].location);
+			var formattedDates = HTMLworkDates.replace("%data%", workObject.jobs[job].years);
+			var formattedDescription = HTMLworkDescription.replace("%data%", workObject.jobs[job].description);
+			var formattedEmployerEntry = formattedEmployer + formattedTitle + formattedLocation + formattedDates + formattedDescription;
+			$(".work-entry:last").append(formattedEmployerEntry);
+			}
+		}
 	};
+
+/*
+function addWork () {
+	$("#workExperience").append(HTMLworkStart);
+	for(job in workObject.jobs){
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", workObject.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", workObject.jobs[job].position);
+	var formattedLocation = HTMLworkLocation.replace("%data%", workObject.jobs[job].location);
+	var formattedDates = HTMLworkDates.replace("%data%", workObject.jobs[job].years);
+	var formattedDescription = HTMLworkDescription.replace("%data%", workObject.jobs[job].description);
+	var formattedEmployerEntry = formattedEmployer + formattedTitle + formattedLocation + formattedDates + formattedDescription;
+	$(".work-entry:last").append(formattedEmployerEntry);
+}
+}
+*/
+workObject.addWork();
+
+
+
 
 var educationalObject = {
 	"schools":[
@@ -83,20 +114,6 @@ var projectsObject = {
 
 
 
-function addWork () {
-	$("#workExperience").append(HTMLworkStart);
-	for(job in workObject.jobs){
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", workObject.jobs[job].employer);
-	var formattedTitle = HTMLworkTitle.replace("%data%", workObject.jobs[job].position);
-	var formattedLocation = HTMLworkLocation.replace("%data%", workObject.jobs[job].location);
-	var formattedDates = HTMLworkDates.replace("%data%", workObject.jobs[job].years);
-	var formattedDescription = HTMLworkDescription.replace("%data%", workObject.jobs[job].description);
-	var formattedEmployerEntry = formattedEmployer + formattedTitle + formattedLocation + formattedDates + formattedDescription;
-	$(".work-entry:last").append(formattedEmployerEntry);
-}
-}
-
-addWork();
 
 
 $(document).click(function(loc) {
