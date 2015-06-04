@@ -84,8 +84,27 @@ var educationalObject = {
 			"years": "2015",
 			"location": "remote",
 			"major": ["Intro to Programming", "Front-End Web Developer (in progress)"]
+		}],
+	addEducation: function() {
+		$("#education").append(HTMLschoolStart);
+		for(var school in educationalObject.schools){
+			var schoolName = HTMLschoolName.replace("%data%", educationalObject.schools[school].name);
+			var schoolDegrees = HTMLschoolDegree.replace("%data%", educationalObject.schools[school].degree);
+			var schoolYears = HTMLschoolDates.replace("%data%", educationalObject.schools[school].years);
+			var schoolLocation = HTMLschoolLocation.replace("%data%", educationalObject.schools[school].location);
+
+			var majorList = [];
+			for(var majorIndex in educationalObject.schools[school].major) {
+				var schoolMajor = HTMLschoolMajor.replace("%data%", educationalObject.schools[school].major[majorIndex]);
+				majorList.push(schoolMajor);
+			}
+			var formattedSchools = schoolName + schoolDegrees + schoolYears + schoolLocation + majorList.join(" ");
+			$(".education-entry:last").append(formattedSchools);
 		}
-		]};
+	}
+};
+
+educationalObject.addEducation();
 
 
 var projectsObject = {
@@ -126,27 +145,4 @@ $(document).click(function(loc) {
     logClicks(x,y);
 });
 
-
-
-
-
-function addEducation () {
-	$("#education").append(HTMLschoolStart);
-	for(school in educationalObject.schools){
-	var schoolName = HTMLschoolName.replace("%data%", educationalObject.schools[school].name);
-	var schoolDegrees = HTMLschoolDegree.replace("%data%", educationalObject.schools[school].degree);
-	var schoolYears = HTMLschoolDates.replace("%data%", educationalObject.schools[school].years);
-	var schoolLocation = HTMLschoolLocation.replace("%data%", educationalObject.schools[school].location);
-
-	var majorList = [];
-	for(majorIndex in educationalObject.schools[school].major) {
-		var schoolMajor = HTMLschoolMajor.replace("%data%", educationalObject.schools[school].major[majorIndex]);
-		majorList.push(schoolMajor);
-	}
-	var formattedSchools = schoolName + schoolDegrees + schoolYears + schoolLocation + majorList.join(" ");
-	$(".education-entry:last").append(formattedSchools);
-};
-}
-
-addEducation();
 
