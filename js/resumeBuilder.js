@@ -1,26 +1,21 @@
-
-var name = "Jason D. Girard"
-var role = "Front-End Web Developer"
-var skills = ["HTML", "CSS", "JavaScript", "Python"];
-
-var formattedName = HTMLheaderName.replace("%data%", name);
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
 var bio = {
 	name: "Jason D. Girard",
-	role: role,
+	role: "Front-End Web Developer",
 	phone: "561.633.3829",
 	email: "jason.dayne@gmail.com",
 	picture: "http://waynehastings.com/wp-content/uploads/2014/01/2348700.jpg",
 	welcomeMessage: "Thank you for visiting my site.",
 	locations: ["Jupiter, FL", "Los Angelels, CA"],
 	gitHub: "https://github.com/JDay18Gi",
-	skills: skills
+	skills: ["HTML", "CSS", "JavaScript", "Python"],
+	addBio: function (bioProperty, helperVar) {
+		var formattedProperty = helperVar.replace("%data%", bioProperty);
+		$("#header").prepend(formattedProperty);
+		}
 };
 
-
+bio.addBio(bio.role, HTMLheaderRole);
+bio.addBio(bio.name, HTMLheaderName);
 
 var workObject = {
 	"jobs":[
@@ -142,7 +137,7 @@ function addEducation () {
 	var schoolDegrees = HTMLschoolDegree.replace("%data%", educationalObject.schools[school].degree);
 	var schoolYears = HTMLschoolDates.replace("%data%", educationalObject.schools[school].years);
 	var schoolLocation = HTMLschoolLocation.replace("%data%", educationalObject.schools[school].location);
-	
+
 	var majorList = [];
 	for(majorIndex in educationalObject.schools[school].major) {
 		var schoolMajor = HTMLschoolMajor.replace("%data%", educationalObject.schools[school].major[majorIndex]);
