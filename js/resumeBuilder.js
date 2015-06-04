@@ -20,12 +20,21 @@ var bio = {
 			$("#skills").append(formattedSkills);
 			}
 			}
+	},
+	addContact: function() {
+		var emailFormatted = HTMLemail.replace("%data%", bio.email);
+		var gitHubFormatted = HTMLgithub.replace("%data%", bio.gitHub);
+		var formattedContacts = emailFormatted + gitHubFormatted;
+		$("#topContacts").append(formattedContacts);
+		$("#footerContacts").append(formattedContacts);
 	}
 };
 
 bio.addBio(bio.role, HTMLheaderRole);
 bio.addBio(bio.name, HTMLheaderName);
 bio.addSkills(bio.skills);
+bio.addContact();
+
 
 var workObject = {
 	"jobs":[
@@ -109,6 +118,8 @@ var projectsObject = {
 projectsObject.addProjects();
 
 
+
+
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
@@ -118,14 +129,6 @@ $(document).click(function(loc) {
 
 
 
-function addContact () {
-	var emailFormatted = HTMLemail.replace("%data%", bio.email);
-	var gitHubFormatted = HTMLgithub.replace("%data%", bio.gitHub);
-	var formattedContacts = emailFormatted + gitHubFormatted;
-	$("#topContacts").append(formattedContacts);
-	$("#footerContacts").append(formattedContacts);
-}
-addContact();
 
 function addEducation () {
 	$("#education").append(HTMLschoolStart);
