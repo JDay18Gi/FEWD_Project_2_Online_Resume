@@ -1,8 +1,10 @@
+
+
 var bio = {
 	name: "Jason D. Girard",
 	role: "Front-End Web Developer",
 	phone: "561.633.3829",
-	location: ["West Palm Beach, FL", "Jupiter, FL", "Moscow, Russia", "Los Angeles, CA", "Monterey, CA", "Geneva, Swizerland"],
+	location: ["West Palm Beach, FL", "Jupiter, FL", "Moscow, Russia", "Los Angeles, CA", "Monterey, CA", "Geneva, Switzerland"],
 	email: "jason.dayne@gmail.com",
 	picture: "http://waynehastings.com/wp-content/uploads/2014/01/2348700.jpg",
 	welcomeMessage: "Thank you for visiting my site.",
@@ -43,7 +45,7 @@ var work = {
 		"position": "Academic Coach",
 		"employer": "CollegePlus",
 		"years": "June 2011 - Present",
-		"location": "West Palm Beach Area, FL",
+		"location": "West Palm Beach, FL",
 		"description": "Responsible for the academic progress of 80+ students. Focused on developing effective strategies for accelerated distance learning. Completed speed learning stunt of 18 college credits in 6 days: <a href='https://www.youtube.com/watch?v=85DlViGkvJc' target='_blank'>https://www.youtube.com/watch?v=85DlViGkvJc</a>"
 		},
 		{
@@ -76,14 +78,14 @@ var education = {
 			"name": "Thomas Edison State College",
 			"degree": "Bachelors of Science in Business Administratrion",
 			"years": "Graduated 2011",
-			"location": "remote",
+			"location": "Trenton, NJ",
 			"major": ["Finance"]
 		},
 		{
 			"name": "Udacity",
 			"degree": "NanoDegree",
 			"years": "2015",
-			"location": "remote",
+			"location": "West Palm Beach, FL",
 			"major": ["Intro to Programming", "Front-End Web Developer (in progress)"]
 		}],
 	display: function() {
@@ -137,8 +139,8 @@ var projects = {
 
 projects.display();
 
-
 $("#mapDiv").append(googleMap);
+
 
 
 
