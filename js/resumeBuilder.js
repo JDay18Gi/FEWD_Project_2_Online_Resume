@@ -18,8 +18,8 @@ var bio = {
 	addSkills: function (bioSkillsLocation){
 		if(bioSkillsLocation.length > 0) {
 			$("#header").append(HTMLskillsStart);
-			for(var index in bioSkillsLocation){
-				var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[index]);
+			for(var skill in bioSkillsLocation){
+				var formattedSkills = HTMLskills.replace("%data%", bioSkillsLocation[skill]);
 				$("#skills").append(formattedSkills);
 				}
 			}
@@ -32,11 +32,6 @@ var bio = {
 		$("#footerContacts").append(formattedContacts);
 		}
 	};
-
-bio.display(bio.role, HTMLheaderRole);
-bio.display(bio.name, HTMLheaderName);
-bio.addSkills(bio.skills);
-bio.addContact();
 
 
 var work = {
@@ -69,7 +64,7 @@ var work = {
 		}
 };
 
-work.display();
+
 
 
 var education = {
@@ -107,8 +102,6 @@ var education = {
 	}
 };
 
-education.display();
-
 
 var projects = {
 	"projects": [
@@ -137,6 +130,13 @@ var projects = {
 	}
 };
 
+
+bio.display(bio.role, HTMLheaderRole);
+bio.display(bio.name, HTMLheaderName);
+bio.addSkills(bio.skills);
+bio.addContact();
+work.display();
+education.display();
 projects.display();
 
 $("#mapDiv").append(googleMap);
